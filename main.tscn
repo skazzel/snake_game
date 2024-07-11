@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dehnl335cii7b"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_0sy8a"]
+[ext_resource type="PackedScene" uid="uid://ct5uwswaf5e54" path="res://snake.tscn" id="2_iofti"]
+[ext_resource type="PackedScene" uid="uid://b4n7mb1d53sn3" path="res://score.tscn" id="2_kfbom"]
+[ext_resource type="Texture2D" uid="uid://25hjuppeyq7p" path="res://background/grass_14.png" id="3_hjy1g"]
+[ext_resource type="Texture2D" uid="uid://bwmv1xysdtihu" path="res://sprites/jlZMPE.png" id="4_66gfy"]
+[ext_resource type="PackedScene" uid="uid://bpmlmlon1i1j2" path="res://game_over.tscn" id="5_kn3x1"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_0sy8a")
+snakeScene = ExtResource("2_iofti")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(500, 564)
+scale = Vector2(1.575, 1.57187)
+texture = ExtResource("3_hjy1g")
+
+[node name="score" parent="." instance=ExtResource("2_kfbom")]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
+[node name="food" type="Sprite2D" parent="."]
+position = Vector2(590, 208)
+scale = Vector2(0.148438, 0.171875)
+texture = ExtResource("4_66gfy")
+offset = Vector2(25, 25)
+
+[node name="gameOver" parent="." instance=ExtResource("5_kn3x1")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="restart" from="gameOver" to="." method="_on_game_over_restart"]

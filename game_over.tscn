@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpmlmlon1i1j2"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_5pxkb"]
+
+[node name="gameOver" type="CanvasLayer"]
+script = ExtResource("1_5pxkb")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -750.0
+offset_top = -638.0
+offset_right = 1969.0
+offset_bottom = 1286.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 77
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 86.0
+offset_right = 106.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Play again"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
